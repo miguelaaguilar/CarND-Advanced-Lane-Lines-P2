@@ -37,9 +37,6 @@ The goals / steps of this project are the following:
 [image19]: ./output_images/final_images3.jpg "Final Images 3"
 [image20]: ./output_images/final_images4.jpg "Final Images 4"
 
-[video1]: ./output_videos/project_output.mp4 "Project Output Video"
-[video2]: ./output_videos/challenge_output.mp4 "Challenge Output Video"
-
 The rubric with the specifications for this project can be found [here](https://review.udacity.com/#!/rubrics/571/view)
 
 The code of the project can be found in a Jupyter Notebook [here](P2.ipynb)
@@ -168,15 +165,13 @@ In the following example, it can be observed the detected lane projected on the 
 
 The following is the result after applying the lane detection pipeline to the project video.
 
-![alt text][video1]
+[Output project video](./output_videos/project_output.mp4)
 
 #### 2. Challenge Video
 
 The following is the result after applying the lane detection pipeline to the challenge video.
 
-![alt text][video1]
-
-Here's a [link to my video result](./project_video.mp4)
+[Output challenge video](./output_videos/challenge_output.mp4)
 
 ---
 
