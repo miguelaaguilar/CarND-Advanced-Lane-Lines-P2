@@ -28,17 +28,17 @@ The goals / steps of this project are the following:
 [image10]: ./output_images/perspective_transform5.jpg "Perspective Transform 5"
 [image11]: ./output_images/perspective_transform6.jpg "Perspective Transform 6"
 [image12]: ./output_images/perspective_transform7.jpg "Perspective Transform 7"
+[image13]: ./output_images/histogram1.jpg "Histogram 1"
+[image14]: ./output_images/histogram1.jpg "Histogram 2"
+[image15]: ./output_images/sliding_windows.jpg "Sliding Windows Example"
+[image16]: ./output_images/previous_fit.jpg "Previous Fit Example"
 
-[image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
+
 [video1]: ./project_video.mp4 "Video"
 
 The rubric with the specifications for this project can be found [here](https://review.udacity.com/#!/rubrics/571/view)
 
-The code of the project can be found [here](P2.ipynb)
+The code of the project can be found in a Jupyter Notebook [here](P2.ipynb)
 
 ---
 
@@ -77,7 +77,7 @@ It is worth mentioning that during the development of this project, the major pa
 
 #### 4. Perspective Transform
 
-The next step in the pipeline is to perform a perspective transformation to get a bird's eye view of the road. This is achieved by using the `cv2.getPerspectiveTransform()` and `cv2.warpPerspective()` functions. The following are examples of the perpective transformation for the given test images:
+The next step in the pipeline is to perform a perspective transformation to get a bird's eye view of the road. The code was implemented in the `perspective_transform()` function. The perspective transformation is achieved by using the `cv2.getPerspectiveTransform()` and `cv2.warpPerspective()` functions. The following are examples of the perpective transformation for the given test images:
 
 ![alt text][image5]
 ![alt text][image6]
@@ -87,6 +87,35 @@ The next step in the pipeline is to perform a perspective transformation to get 
 ![alt text][image10]
 ![alt text][image11]
 ![alt text][image12]
+
+#### 5. Lane Lines Detection
+
+To detect the pixels that correspond to the lane lines the histogram is used as as a basis. The peaks in an histogram of the binary image in birds view represent the position of the lanes, as is shown in the following example.
+
+![alt text][image13]
+![alt text][image14]
+
+The `find_lanes_sliding_windows()` function implements a slinding windows approach in which the histogram is used in each window to detect the lane lines. The detection of the lane lines is based on a second order polynomial by using the `np.polyfit()` function. The following are the parameters used for the sliding windows approach:
+
+```
+# Number of sliding windows
+nwindows = 9
+    
+# Width of the windows +/- margin
+margin = 100
+    
+# Minimum number of pixels found to recenter window
+minpix = 50
+```
+
+The following image shows an example of lane detection using sliding windows:
+
+![alt text][image15]
+
+As previously mentioned, the `find_lanes_sliding_windows()` function implements the lane lines detection using an sliding window approach. However, once we have the estimation of both lane lines for a given frame, it is possible to exploit the fact that the estimation is similar between consecutive frames in a video. This enables the implementation of a more effecient lane estimation approach, which focuses of a narrow area around the lane lines detected in previous frames to avoid performing the sliding window approach for every frame from scratch. The `find_lanes_previous_fit()` function implements the lane line detection using previous polynomial estimations. As example of this is shown in the following image:
+
+![alt text][image16]
+
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
