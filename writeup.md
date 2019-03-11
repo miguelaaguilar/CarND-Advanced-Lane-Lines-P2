@@ -163,19 +163,19 @@ In the following example, it can be observed the detected lane projected on the 
 
 #### 1. Project Video
 
-The following is the result after applying the lane detection pipeline to the project video.
+The following is the result after applying the lane detection pipeline to the project video. The lane detection is satisfactory.
 
 [Output project video](./output_videos/project_output.mp4)
 
 #### 2. Challenge Video
 
-The following is the result after applying the lane detection pipeline to the challenge video. 
+The following is the result after applying the lane detection pipeline to the challenge video. The lane detection is satisfactory.
 
 [Output challenge video](./output_videos/challenge_output.mp4)
 
 #### 3. Harder Challenge Video
 
-The following is the result after applying the lane detection pipeline to the harder challenge video.
+The following is the result after applying the lane detection pipeline to the harder challenge video. The lane detection pipeline needs improvements to handle this video.
 
 [Output harder challenge video](./output_videos/harder_challenge_output.mp4)
 
