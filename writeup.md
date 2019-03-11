@@ -32,7 +32,10 @@ The goals / steps of this project are the following:
 [image14]: ./output_images/histogram2.jpg "Histogram 2"
 [image15]: ./output_images/sliding_windows.jpg "Sliding Windows Example"
 [image16]: ./output_images/previous_fit.jpg "Previous Fit Example"
-
+[image17]: ./output_images/final_images1.jpg "Final Images 1"
+[image18]: ./output_images/final_images2.jpg "Final Images 2"
+[image19]: ./output_images/final_images3.jpg "Final Images 3"
+[image20]: ./output_images/final_images4.jpg "Final Images 4"
 
 [video1]: ./project_video.mp4 "Video"
 
@@ -88,7 +91,7 @@ The next step in the pipeline is to perform a perspective transformation to get 
 ![alt text][image11]
 ![alt text][image12]
 
-#### 5. Lane Lines Detection
+#### 5. Detection of Lane Lines
 
 To detect the pixels that correspond to the lane lines the histogram is used as as a basis. The peaks in an histogram of the binary image in birds view represent the position of the lanes, as is shown in the following example.
 
@@ -117,54 +120,51 @@ As previously mentioned, the `find_lanes_sliding_windows()` function implements 
 
 ![alt text][image16]
 
+#### 6. Lane Curvature and Offset
 
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+The curvature of the lane is compute in the `calc_lane_curvature()` function. Here the lane radius is computed using the bird's view of the lane.
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+The vehicle position with respect to center is computed in the `calc_lane_offset()`. A negative value means that the car has an offset towards the left of the lane, otherwise, in the value is positive that means the offset is towards the right of the lane.
 
-```python
-src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
-dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
+The following is an example of the lane curvature and offset computation:
+
 ```
+test_images/test6.jpg  | Left curvature =  917.98 m, Right curvature =  859.61 m, Lane offset =  -0.39 m
+```
+![alt text][image15]
 
-This resulted in the following source and destination points:
+#### 7. Displaying Lane and Information on the Original Image
 
-| Source        | Destination   | 
-|:-------------:|:-------------:| 
-| 585, 460      | 320, 0        | 
-| 203, 720      | 320, 720      |
-| 1127, 720     | 960, 720      |
-| 695, 460      | 960, 0        |
+The function `display_lane_and_info()` shows on top of the original road image the curvature and offset information. In addition, the bird's eye view of the road is shown, along with the binary image and the estimated lane lines. An example of the resultant images is shown in the following sections.
 
-I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+#### 8. Complete Lane Detection Pipeline
 
-![alt text][image4]
+The complete lane detection pipeline is implemented in the `lane_detection_pipeline()` function. The steps performed are the following:
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+1. Correct image distortion
+2. Apply color and gradient thresholds
+3. Apply perspective transformation to get the bird's eye view
+4. Find lane lines either using the sliding window approach, or the faster previous fit approach
+5. Verify if the lane estimation is valid by checking the resulting average lane width against the most recent valid value. To detect bad frames by checking the minimum and maximum distance between lines with the average distance of the previous valid frame. The tolerance metric here is +- 20% of the average lane width
+6. Draw the lane identification information on top of the original image. If the frame is valid the new estimation is used, orthewise, the previous valid estimation
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Note that to the keep track of characteristics of the lane across multiple frames, a class called `class Lane()` is used. 
 
-![alt text][image5]
+#### Applying the Lane Detection Pipeline to the Test Images
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+In the following example, it can be observed the detected lane projected on the original images. In addition, the curvature and offset computations are presented. Finally, the bird's eye view of the lane is shown on the top left of the images.
 
-I did this in lines # through # in my code in `my_other_file.py`
+![alt text][image17]
+![alt text][image18]
+![alt text][image19]
+![alt text][image20]
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+#### Applying the Lane Detection Pipeline to the Videos
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+#### 1. Project Video
 
-![alt text][image6]
+#### 2. Chanllenge Video
 
----
 
 ### Pipeline (video)
 
