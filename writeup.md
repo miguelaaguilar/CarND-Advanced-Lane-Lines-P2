@@ -17,8 +17,8 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./camera_cal/calibration2.jpg "Calibration Image Example"
-[image2]: ./output_images/chessboard_corners.png "Chessboard Corners Example"
-[image3]: ./output_images/undistorted_chessboard.png "Undistorted Chessboard Example"
+[image2]: ./output_images/chessboard_corners.jpg "Chessboard Corners Example"
+[image3]: ./output_images/undistorted_chessboard.jpg "Undistorted Chessboard Example"
 
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
