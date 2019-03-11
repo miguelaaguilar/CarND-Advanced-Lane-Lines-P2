@@ -3,7 +3,7 @@
 ### Writeup of Miguel Aguilar
 ---
 
-The goals / steps of this project are the following:
+The goals of this project are the following:
 
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
 * Apply a distortion correction to raw images.
@@ -45,18 +45,18 @@ The code of the project can be found in a Jupyter Notebook [here](P2.ipynb)
 
 ### Camera Calibration  
 
-The first step of this project before lane detection pipeline is to calibrate the camera to be able to correct image distortion. The process is done once at the beginning. The camera calibration is based on a chessboard image from which is possible to detect its corners. From the previous image we can observe that the number of corner in the x axis is 9, while in the y axis is 6. From this image the corners can be detected using the `cv2.findChessboardCorners()` function as shown in the following image:
+The first step of this project is to calibrate the camera to be able to correct image distortion. The process is done once at the beginning. The camera calibration is based on a chessboard image from which is possible to detect its corners.  The corners of the following chessboard image can be detected by using the `cv2.findChessboardCorners()` function:
 
 ![alt text][image1]
 
-Then, using the function  `cv2.findChessboardCorners()` it is possible to extract the `objpoints` and the  `imgpoints`. Using the `objpoints` and the  `imgpoints` is possible to derive the camera calibration and distortion coefficents by using the `cv2.calibrateCamera()`. Finally, using the `cv2.undistort()` function the images can be undistorted, as shown in the following example:
+From the previous image it can be observed that the number of corners in the x axis is 9, while in the y axis is 6. Then, using the function  `cv2.findChessboardCorners()` it is possible to extract the `objpoints` and the  `imgpoints`. Using the `objpoints` and the  `imgpoints` is possible to derive the camera calibration and distortion coefficents by using the `cv2.calibrateCamera()`. Finally, using the `cv2.undistort()` function the images can be undistorted, as shown in the following example:
 
 ![alt text][image2]
 
 
 ### Advanced Lane Detection Pipeline
 
-In this section each of the stages of the proposed advanced lane detection pipeline is explained.
+In this section each of the stages of the proposed advanced lane detection pipeline are explained.
 
 #### 1. Undistorting a Test Image
 
@@ -66,11 +66,11 @@ The following test images show the camera distortion correction in action:
 
 #### 2. Color and Gradient Thresholding
 
-For an efective lane detection, in this project it was used a combination of color and gradient thresholds (see the `color_gradient_thres()` function). Before extracting this thresholds the brightness of the images is improved by the `increase_brightness()` function.
+For an efective lane detection, in this project it was used a combination of color and gradient thresholds (see the `color_gradient_thres()` function). Before extracting this thresholds, the brightness of the images is improved by the `increase_brightness()` function.
 
-First of all, a color thresholding is applied to the images to extract only the yellow and white objects. By this is possible to filter out other possible lines and noise on the road. This extraction of colors is key for the challenge video. To extract the yellow and white colors the images are converted to the HSV color space. Once in the HSV color space it was possible to apply thresholds to extract only yellow and white objects. 
+First of all, a color thresholding is applied to the images to extract only the yellow and white objects. By doing this it is possible to filter out other possible lines and noise on the road. This extraction of colors is key for the challenge video. To extract the yellow and white colors, the images are converted to the HSV color space. Once in the HSV color space, it is possible to apply thresholds to extract only yellow and white objects. 
 
-Afterward, gradient thresholding was applied, which is a combination of sobel x, direction and magnitude thresholds. The following image shows an example of a resulting binary image after applying the combined color and gradient thresholds:
+Afterward, gradient thresholding is applied, which is a combination of sobel x, direction and magnitude thresholds. The following image shows an example of a resulting binary image after applying the combined color and gradient thresholds:
 
 ![alt text][image4]
 
@@ -78,7 +78,7 @@ It is worth mentioning that during the development of this project, the major pa
 
 #### 4. Perspective Transform
 
-The next step in the pipeline is to perform a perspective transformation to get a bird's eye view of the road. The code was implemented in the `perspective_transform()` function. The perspective transformation is achieved by using the `cv2.getPerspectiveTransform()` and `cv2.warpPerspective()` functions. The following are examples of the perpective transformation for the given test images:
+The next step in the pipeline is to perform a perspective transformation to get a bird's eye view of the road. The code is implemented in the `perspective_transform()` function. The perspective transformation is achieved by using the `cv2.getPerspectiveTransform()` and `cv2.warpPerspective()` functions. The following are examples of the perpective transformation for the given test images:
 
 ![alt text][image5]
 ![alt text][image6]
@@ -91,7 +91,7 @@ The next step in the pipeline is to perform a perspective transformation to get 
 
 #### 5. Detection of Lane Lines
 
-To detect the pixels that correspond to the lane lines the histogram is used as as a basis. The peaks in an histogram of the binary image in birds view represent the position of the lanes, as is shown in the following example.
+To detect the pixels that correspond to the lane lines the histogram is used as as a basis. The peaks in an histogram of the binary image in birds view represent the position of the lanes, as shown in the following example:
 
 ![alt text][image13]
 
@@ -114,7 +114,7 @@ The following image shows an example of lane detection using sliding windows:
 
 ![alt text][image15]
 
-As previously mentioned, the `find_lanes_sliding_windows()` function implements the lane lines detection using an sliding window approach. However, once we have the estimation of both lane lines for a given frame, it is possible to exploit the fact that the estimation is similar between consecutive frames in a video. This enables the implementation of a more effecient lane estimation approach, which focuses of a narrow area around the lane lines detected in previous frames to avoid performing the sliding window approach for every frame from scratch. The `find_lanes_previous_fit()` function implements the lane line detection using previous polynomial estimations. As example of this is shown in the following image:
+As previously mentioned, the `find_lanes_sliding_windows()` function implements the lane lines detection by using an sliding window approach. However, once we have the estimation of both lane lines for a given frame, it is possible to exploit the fact that the estimation is similar between consecutive frames in a video. This enables the implementation of a more effecient lane estimation approach, which focuses of a narrow area around the lane lines detected in previous frames to avoid performing the sliding window approach for every frame from scratch. The `find_lanes_previous_fit()` function implements the lane line detection using previous polynomial estimations. As example of this is shown in the following image:
 
 ![alt text][image16]
 
@@ -122,7 +122,7 @@ As previously mentioned, the `find_lanes_sliding_windows()` function implements 
 
 The curvature of the lane is compute in the `calc_lane_curvature()` function. Here the lane radius is computed using the bird's view of the lane.
 
-The vehicle position with respect to center is computed in the `calc_lane_offset()`. A negative value means that the car has an offset towards the left of the lane, otherwise, in the value is positive that means the offset is towards the right of the lane.
+The vehicle position with respect to center is computed in the `calc_lane_offset()`. A negative value means that the car has an offset towards the left of the lane, otherwise, if the value is positive that means the offset is towards the right of the lane.
 
 The following is an example of the lane curvature and offset computation:
 
@@ -133,7 +133,7 @@ test_images/test6.jpg  | Left curvature =  917.98 m, Right curvature =  859.61 m
 
 #### 7. Displaying Lane and Information on the Original Image
 
-The function `display_lane_and_info()` shows on top of the original road image the curvature and offset information. In addition, the bird's eye view of the road is shown, along with the binary image and the estimated lane lines. An example of the resultant images is shown in the following sections.
+The function `display_lane_and_info()` displays on top of the original road image the curvature and offset information. In addition, the bird's eye view of the road is shown, along with the binary image and the estimated lane lines. An example of the resultant images is shown in the following sections.
 
 #### 8. Complete Lane Detection Pipeline
 
@@ -169,14 +169,56 @@ The following is the result after applying the lane detection pipeline to the pr
 
 #### 2. Challenge Video
 
-The following is the result after applying the lane detection pipeline to the challenge video.
+The following is the result after applying the lane detection pipeline to the challenge video. 
 
 [Output challenge video](./output_videos/challenge_output.mp4)
+
+#### 3. Challenge Video
+
+The following is the result after applying the lane detection pipeline to the harder challenge video.
+
+[Output challenge video](./output_videos/harder_challenge_output.mp4)
 
 ---
 
 ### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+#### 1. Summary
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+In this project it was implemented an advanced lane detection pipeline. Some of the aspects that make this pipeline more robust are:
+
+* Camera calibration
+* Combined color and gradient thresholding
+* Perspective transformation
+* Lane line estimation by second order polynomial
+* Lane curvature and offset estimation
+
+One of the key aspects of the proposed pipeline that help to achieve a satisfactory performance in the challenge video was the yellow and white color thresholding. This helped to ignore darker lines unrelated to the lane boundaries, which are probably there due to repairs on the road.
+
+It is worth mentioning that most of the effort during the implemention of the proposed lane detection pipeline was focused on tuning the color and gradient thresholds. A proper selection of the thresholds make a significant diference on the final performance of the pipeline. 
+
+#### 2. Potential Shortcomings of the Pipeline
+
+The following are some points where the proposed lane detection pipeline might fail. These aspects were concluded from situations presented in the challenge and harder challenge videos
+
+* Objects on the road near the lane lines might disturb the polynomial estimation of the lines. This was observe in the challenge video, where there is a white object near the left line after the bridge
+
+* Sharp turns are hard to detect as observed in the harder challenge video
+
+* Extreme brightness changes along the road prevent the proper detection of the lane lines. This was observed in the harder challenge video in which there is a big contrast between the sunny and the shadow areas
+
+#### 3. Possible Improvements
+
+* In order to make the detection of the lanes smoother, the estimation of the lines could be averaged over the last n frames
+
+* The color and gradient threshould should be improved to be able to ignore objects near the lane lines
+
+* The behavior of the pipeline should be investigated in more detail in the conditions presented in the harder challenge video. In particular, regarding the sharp turns and the extreme brightness change
+
+#### References
+
+* Part of the code of this project was taken from the lessons 7, 8 and 9 of the Self Driving Car Engineer Nanodegree of Udacity
+* The `increase_brightness()` function was taken from [here](https://stackoverflow.com/questions/32609098/how-to-fast-change-image-brightness-with-python-opencv)
+
+
+
