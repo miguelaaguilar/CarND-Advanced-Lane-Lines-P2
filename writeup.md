@@ -16,9 +16,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./camera_cal/calibration2.jpg "Calibration Image Example"
-[image2]: ./output_images/chessboard_corners.jpg "Chessboard Corners Example"
-[image3]: ./output_images/undistorted_chessboard.jpg "Undistorted Chessboard Example"
+[image1]: ./output_images/chessboard_corners.jpg "Chessboard Corners Example"
+[image2]: ./output_images/undistorted_chessboard.jpg "Undistorted Chessboard Example"
 
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
@@ -33,16 +32,13 @@ The rubric with the specifications for this project can be found [here](https://
 
 ### Camera Calibration  
 
-The first step of this project before lane detection pipeline is to calibrate the camera to be able to correct image distortion. The process is done once at the beginning. The camera calibration is based on a chessboard image from which is possible to detect its corners. The following is a calibration image example:
+The first step of this project before lane detection pipeline is to calibrate the camera to be able to correct image distortion. The process is done once at the beginning. The camera calibration is based on a chessboard image from which is possible to detect its corners. From the previous image we can observe that the number of corner in the x axis is 9, while in the y axis is 6. From this image the corners can be detected using the `cv2.findChessboardCorners()` function as shown in the following image:
 
 ![alt text][image1]
 
-From the previous image we can observe that the number of corner in the x axis is 9, while in the y axis is 6. From this image the corners can be detected using the `cv2.findChessboardCorners()` function as shown in the following image:
-
-![alt text][image2]
-
 Then, using the function  `cv2.findChessboardCorners()` it is possible to extract the `objpoints` and the  `imgpoints`. Using the `objpoints` and the  `imgpoints` is possible to derive the camera calibration and distortion coefficents by using the `cv2.calibrateCamera()`. Finally, using the `cv2.undistort()` function the images can be undistorted, as shown in the following example:
 
+![alt text][image2]
 
 
 ### Pipeline (single images)
