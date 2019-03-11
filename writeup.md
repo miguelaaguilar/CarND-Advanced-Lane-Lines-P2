@@ -18,6 +18,8 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/chessboard_corners.jpg "Chessboard Corners Example"
 [image2]: ./output_images/undistorted_chessboard.jpg "Undistorted Chessboard Example"
+[image3]: ./output_images/undistorted_test_image.jpg "Undistorted Test Images"
+[image3]: ./output_images/binary_image.jpg "Binary Image"
 
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
@@ -41,18 +43,27 @@ Then, using the function  `cv2.findChessboardCorners()` it is possible to extrac
 ![alt text][image2]
 
 
-### Pipeline (single images)
+### Advanced Lane Detection Pipeline
 
-#### 1. Provide an example of a distortion-corrected image.
+In this section each of the stages of the proposed advanced lane detection pipeline is explained.
 
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+#### 1. Undistorting a Test Image
 
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
-
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+The following test images show the camera distortion correction in action
 
 ![alt text][image3]
+
+#### 2. Color and Gradient Thresholding
+
+For an efective lane detection, in this project it was used a combination of color and gradient thresholds (see the `color_gradient_thres()` function). Before extracting this thresholds the brightness of the images is improved by the `increase_brightness()` function.
+
+First of all, a color thresholding is applied to the images to extract only the yellow and white objects. By this is possible to filter out other possible lines and noise on the road. This extraction of colors is key for the challenge video. To extract the yellow and white colors the images are converted to the HSV color space. Once in the HSV color space it was possible to apply thresholds to extract only yellow and white objects. 
+
+Afterward, gradient thresholding was applied, which is a combination of sobel x, direction and magnitude thresholds. The following image shows an example of a resulting binary image after applying the combined color and gradient thresholds:
+
+![alt text][image4]
+
+It is worth mentioning that during the development of this project, the major part of the time was spent tunning the color and gradient thresholds to achieve a satisfactory lane detection.
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
