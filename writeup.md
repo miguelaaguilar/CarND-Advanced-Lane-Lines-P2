@@ -19,7 +19,7 @@ The goals / steps of this project are the following:
 [image1]: ./output_images/chessboard_corners.jpg "Chessboard Corners Example"
 [image2]: ./output_images/undistorted_chessboard.jpg "Undistorted Chessboard Example"
 [image3]: ./output_images/undistorted_test_image.jpg "Undistorted Test Images"
-[image3]: ./output_images/binary_image.jpg "Binary Image"
+[image4]: ./output_images/binary_image.jpg "Binary Image"
 
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
@@ -49,7 +49,7 @@ In this section each of the stages of the proposed advanced lane detection pipel
 
 #### 1. Undistorting a Test Image
 
-The following test images show the camera distortion correction in action
+The following test images show the camera distortion correction in action:
 
 ![alt text][image3]
 
