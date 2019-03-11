@@ -173,7 +173,7 @@ The following is the result after applying the lane detection pipeline to the ch
 
 [Output challenge video](./output_videos/challenge_output.mp4)
 
-#### 3. Challenge Video
+#### 3. Harder Challenge Video
 
 The following is the result after applying the lane detection pipeline to the harder challenge video.
 
