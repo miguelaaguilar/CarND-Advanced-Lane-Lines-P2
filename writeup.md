@@ -93,6 +93,7 @@ The next step in the pipeline is to perform a perspective transformation to get 
 To detect the pixels that correspond to the lane lines the histogram is used as as a basis. The peaks in an histogram of the binary image in birds view represent the position of the lanes, as is shown in the following example.
 
 ![alt text][image13]
+
 ![alt text][image14]
 
 The `find_lanes_sliding_windows()` function implements a slinding windows approach in which the histogram is used in each window to detect the lane lines. The detection of the lane lines is based on a second order polynomial by using the `np.polyfit()` function. The following are the parameters used for the sliding windows approach:
