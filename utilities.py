@@ -6,7 +6,7 @@ def show_image(img, title = "", cmap='gray', file = 'empty'):
     plt.imshow(img, cmap)
     plt.show()
     if file not in ['empty']:
-        mp.savefig('output_images/' + file + '.png', type="png", bbox_inches='tight')
+        mp.savefig('output_images/' + file + '.jpg', type="jpg", bbox_inches='tight')
     
 def show_images(images, columns = 2, colormap='gray', name = 'empty'):
     fig = plt.figure(figsize=(20,10))
@@ -26,7 +26,7 @@ def show_images_side_by_side(image1, image2, title1 ="", title2 = "", cmap='gray
     subfig2.set_title(title2)
     plt.show()
     if file not in ['empty']:
-        mp.savefig('output_images/' + file + '.png', type="png", bbox_inches='tight')
+        mp.savefig('output_images/' + file + '.jpg', type="jpg", bbox_inches='tight')
         
 def show_images_side_by_side3(image1, image2, image3, title1 ="", title2 = "", title3 = "", cmap='gray'):
     fig = plt.figure(figsize=(20,10))
