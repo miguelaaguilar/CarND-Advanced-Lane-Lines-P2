@@ -20,6 +20,14 @@ The goals / steps of this project are the following:
 [image2]: ./output_images/undistorted_chessboard.jpg "Undistorted Chessboard Example"
 [image3]: ./output_images/undistorted_test_image.jpg "Undistorted Test Images"
 [image4]: ./output_images/binary_image.jpg "Binary Image"
+[image5]: ./output_images/perspective_transform0.jpg "Perspective Transform 0"
+[image6]: ./output_images/perspective_transform1.jpg "Perspective Transform 1"
+[image7]: ./output_images/perspective_transform2.jpg "Perspective Transform 2"
+[image8]: ./output_images/perspective_transform3.jpg "Perspective Transform 3"
+[image9]: ./output_images/perspective_transform4.jpg "Perspective Transform 4"
+[image10]: ./output_images/perspective_transform5.jpg "Perspective Transform 5"
+[image11]: ./output_images/perspective_transform6.jpg "Perspective Transform 6"
+[image12]: ./output_images/perspective_transform7.jpg "Perspective Transform 7"
 
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./examples/binary_combo_example.jpg "Binary Example"
@@ -66,6 +74,19 @@ Afterward, gradient thresholding was applied, which is a combination of sobel x,
 ![alt text][image4]
 
 It is worth mentioning that during the development of this project, the major part of the time was spent tunning the color and gradient thresholds to achieve a satisfactory lane detection.
+
+#### 4. Perspective Transform
+
+The next step in the pipeline is to perform a perspective transformation to get a bird's eye view of the road. This is achieved by using the `cv2.getPerspectiveTransform()` and `cv2.warpPerspective()` functions. The following are examples of the perpective transformation for the given test images:
+
+![alt text][image5]
+![alt text][image6]
+![alt text][image7]
+![alt text][image8]
+![alt text][image9]
+![alt text][image10]
+![alt text][image11]
+![alt text][image12]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 

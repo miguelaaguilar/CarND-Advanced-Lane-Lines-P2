@@ -26,7 +26,7 @@ def show_images_side_by_side(image1, image2, title1 ="", title2 = "", cmap='gray
     if file not in ['empty']:
         mp.savefig('output_images/' + file + '.jpg', type="jpg", bbox_inches='tight')
         
-def show_images_side_by_side3(image1, image2, image3, title1 ="", title2 = "", title3 = "", cmap='gray'):
+def show_images_side_by_side3(image1, image2, image3, title1 ="", title2 = "", title3 = "", cmap='gray', file = "empty"):
     fig = plt.figure(figsize=(20,10))
     subfig1 = fig.add_subplot(1,3,1)
     subfig1.imshow(image1)
@@ -37,4 +37,5 @@ def show_images_side_by_side3(image1, image2, image3, title1 ="", title2 = "", t
     subfig3 = fig.add_subplot(1,3,3)
     subfig3.imshow(image3, cmap)
     subfig3.set_title(title3)
-    plt.show()
+    if file not in ['empty']:
+        mp.savefig('output_images/' + file + '.jpg', type="jpg", bbox_inches='tight')
