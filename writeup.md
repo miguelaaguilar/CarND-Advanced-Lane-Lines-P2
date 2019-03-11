@@ -166,15 +166,17 @@ In the following example, it can be observed the detected lane projected on the 
 
 #### 1. Project Video
 
-The following is the result after applying the lane detection pipeline to the project video
+The following is the result after applying the lane detection pipeline to the project video.
 
 ![alt text][video1]
 
 #### 2. Challenge Video
 
-The following is the result after applying the lane detection pipeline to the challenge video
+The following is the result after applying the lane detection pipeline to the challenge video.
 
-![alt text][video2]
+![alt text][video1]
+
+Here's a [link to my video result](./project_video.mp4)
 
 ---
 
