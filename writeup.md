@@ -30,6 +30,8 @@ The goals / steps of this project are the following:
 
 The rubric with the specifications for this project can be found [here](https://review.udacity.com/#!/rubrics/571/view)
 
+The code of the project can be found [here](P2.ipynb)
+
 ---
 
 ### Camera Calibration  
