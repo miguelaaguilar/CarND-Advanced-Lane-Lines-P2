@@ -29,7 +29,7 @@ The goals / steps of this project are the following:
 [image11]: ./output_images/perspective_transform6.jpg "Perspective Transform 6"
 [image12]: ./output_images/perspective_transform7.jpg "Perspective Transform 7"
 [image13]: ./output_images/histogram1.jpg "Histogram 1"
-[image14]: ./output_images/histogram1.jpg "Histogram 2"
+[image14]: ./output_images/histogram2.jpg "Histogram 2"
 [image15]: ./output_images/sliding_windows.jpg "Sliding Windows Example"
 [image16]: ./output_images/previous_fit.jpg "Previous Fit Example"
 
