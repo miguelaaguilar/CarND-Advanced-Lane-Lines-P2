@@ -37,7 +37,8 @@ The goals / steps of this project are the following:
 [image19]: ./output_images/final_images3.jpg "Final Images 3"
 [image20]: ./output_images/final_images4.jpg "Final Images 4"
 
-[video1]: ./project_video.mp4 "Video"
+[video1]: ./output_videos/project_output.mp4 "Project Output Video"
+[video2]: ./output_videos/challenge_output.mp4 "Challenge Output Video"
 
 The rubric with the specifications for this project can be found [here](https://review.udacity.com/#!/rubrics/571/view)
 
@@ -150,7 +151,9 @@ The complete lane detection pipeline is implemented in the `lane_detection_pipel
 
 Note that to the keep track of characteristics of the lane across multiple frames, a class called `class Lane()` is used. 
 
-#### Applying the Lane Detection Pipeline to the Test Images
+---
+
+### Applying the Lane Detection Pipeline to the Test Images
 
 In the following example, it can be observed the detected lane projected on the original images. In addition, the curvature and offset computations are presented. Finally, the bird's eye view of the lane is shown on the top left of the images.
 
@@ -159,18 +162,19 @@ In the following example, it can be observed the detected lane projected on the 
 ![alt text][image19]
 ![alt text][image20]
 
-#### Applying the Lane Detection Pipeline to the Videos
+### Applying the Lane Detection Pipeline to the Videos
 
 #### 1. Project Video
 
-#### 2. Chanllenge Video
+The following is the result after applying the lane detection pipeline to the project video
 
+![alt text][video1]
 
-### Pipeline (video)
+#### 2. Challenge Video
 
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+The following is the result after applying the lane detection pipeline to the challenge video
 
-Here's a [link to my video result](./project_video.mp4)
+![alt text][video2]
 
 ---
 
