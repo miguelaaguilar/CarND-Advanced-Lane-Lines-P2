@@ -4,7 +4,6 @@ from matplotlib import pyplot as mp
 def show_image(img, title = "", cmap='gray', file = 'empty'):
     plt.title(title)
     plt.imshow(img, cmap)
-    plt.show()
     if file not in ['empty']:
         mp.savefig('output_images/' + file + '.jpg', type="jpg", bbox_inches='tight')
     
@@ -24,7 +23,6 @@ def show_images_side_by_side(image1, image2, title1 ="", title2 = "", cmap='gray
     subfig2 = fig.add_subplot(1,2,2)
     subfig2.imshow(image2, cmap)
     subfig2.set_title(title2)
-    plt.show()
     if file not in ['empty']:
         mp.savefig('output_images/' + file + '.jpg', type="jpg", bbox_inches='tight')
         
